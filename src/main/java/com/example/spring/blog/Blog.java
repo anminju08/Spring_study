@@ -12,4 +12,9 @@ public class Blog {
     public String title;
     public Integer date;
     public Integer peopleCount;
+
+    @Override
+    public String toString() {
+        return title + " " + date + " " + peopleCount;
+    }
 }
