@@ -1,5 +1,6 @@
 package com.example.spring.blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BlogRepository extends JpaRepository<Blog, Integer> {
+public interface BlogRepository extends JpaRepository<Blog, Long> {
+
 }

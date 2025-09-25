@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link href="/main.css" rel="stylesheet">
+<div th:replace="~{nav.html :: navbar}"></div>
+<form action="/add" method="POST">
+    <input name="title">
+    <input name="price">
+    <button type="submit">버튼</button>
+</form>
+</body>
+</html>
