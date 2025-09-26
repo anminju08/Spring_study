@@ -39,7 +39,7 @@ public class BlogController {
 
     //ItemController.java
     @GetMapping("/detail/{id}")
-    String detail() {
+    String detail(@PathVariable Integer id, Model model) {
         Optional<Blog> result = BlogRepository.findById();
         if (result.isPresent()){
             System.out.println(result.get());
@@ -48,4 +48,5 @@ public class BlogController {
             return "redirect:/";
         }
     }
+
 }
