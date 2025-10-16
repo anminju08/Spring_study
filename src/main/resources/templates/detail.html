@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<link href="/main.css" rel="stylesheet">
-<div th:replace="~{nav.html :: navbar}"></div>
 <div class="detail">
     <h4>상세페이지</h4>
     <img src="https://placehold.co/300">
-    <h4>금도금 바지</h4>
-    <p>7억</p>
+    <h4 th:text="${blog.title}"></h4>
+    <p th:text="${blog.price}"></p>
 </div>
 </body>
 </html>

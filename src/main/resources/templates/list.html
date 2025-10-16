@@ -7,13 +7,12 @@
 <body>
 <link href="/main.css" rel="stylesheet">
 <div th:replace="~{nav.html :: navbar}"></div>
-<div class="card" th:each="sellitem : ${blogs}">
-    <img src="https://placehold.co/300">
-    <div>
-        <h4 th:text="${sellitem.id}"></h4>
-        <h4 th:text="${sellitem.title}"></h4>
-        <h4 th:text="${sellitem.date}"></h4>
+
+    <div class="card" th:each="i : ${blogs}">
+        <img src="https://placehold.co/300">
+        <a th:href="@{'/detail/' + ${i.id}}" th:text="${i.title}"></a>
+        <p th:text="${i.price + '원'}"></p>
     </div>
-</div>
 </body>
 </html>
+
