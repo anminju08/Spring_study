@@ -1,4 +1,5 @@
 package com.example.spring.blog;
+import com.example.spring.Item;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.Optional;
 public class BlogController {
     private final BlogRepository blogRepository;
 
-    @GetMapping
+    @GetMapping("/list")
     public String get(Model model) {
         List<Blog> blogs = blogRepository.findAll();
         model.addAttribute("blogs", blogs);
@@ -55,4 +56,36 @@ public class BlogController {
         }
     }
 
-}
+        @GetMapping("/edit/{id}")
+        String edit(@PathVariable Long id, Model model) {
+            Optional<Blog> result = blogRepository.findById(id);
+            if (result.isPresent()) {
+                model.addAttribute("data", result.get());
+                return "edit.html";
+            } else {
+                return "redirect:/";
+            }
+        }
+
+        @PostMapping("/edit/{id}")
+        String editPost(@PathVariable Long id, @RequestParam String title, @RequestParam Integer price) {
+            Optional<Blog> result = blogRepository.findById(id);
+            if (result.isPresent()) {
+                Blog blog = result.get();
+                blog.setTitle(title);
+                blog.setPrice(price);
+                blogRepository.save(blog);
+            }
+            return "redirect:/detail/" + id;
+        }
+
+    @GetMapping("/delete/{id}")
+    String delete(@PathVariable Long id) {
+        blogRepository.deleteById(id);
+        return "redirect:/list";
+    }
+    }
+
+
+
+

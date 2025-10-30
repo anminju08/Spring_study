@@ -14,6 +14,9 @@ public class BlogTest {
     private Integer age;
     private String name;
 
+    protected BlogTest() {
+    }
+
     private BlogTest(String age, String name) {
         this.age = Integer.parseInt(age)+1;
         this.name = name;

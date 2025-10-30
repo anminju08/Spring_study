@@ -3,6 +3,20 @@
     <img src="https://placehold.co/300">
     <h4 th:text="${blog.title}"></h4>
     <p th:text="${blog.price}"></p>
+
+    <button class="btn" value="">테스트용</button>
+
+
+    <script>
+            fetch('/delete/{id}', {
+            method : 'POST',
+            headers : {
+            "Content-Type": "application/json",
+        },
+            body : JSON.stringify({title : 'kim', price : 123})
+        })
+
+    </script>
 </div>
 </body>
 </html>
