@@ -3,14 +3,13 @@ import com.example.spring.Item;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
@@ -40,7 +39,7 @@ public class BlogController {
         blog.setTitle(title);
         blog.setPrice(price);
         blogRepository.save(blog);
-        return "redirect:/";
+        return "redirect:/write";
     }
 
     //ItemController.java
@@ -79,13 +78,19 @@ public class BlogController {
             return "redirect:/detail/" + id;
         }
 
-    @GetMapping("/delete/{id}")
-    String delete(@PathVariable Long id) {
+    @DeleteMapping("/blog/{id}")
+    ResponseEntity<String> deleteItem(@PathVariable Long id) {
         blogRepository.deleteById(id);
-        return "redirect:/list";
-    }
+        return ResponseEntity.status(200).body("삭제완료");
     }
 
+    @GetMapping("/test2")
+    String test2() {
+        var encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("qwer1234"));
+        return "redirect:/list";
+    }
+}
 
 
 

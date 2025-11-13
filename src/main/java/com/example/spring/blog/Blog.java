@@ -30,7 +30,7 @@ public class Blog {
     }
 
     public void setPrice(Integer price) {
-        if (price <= 0){
+        if (price > 0){
             this.price = price;
         }
     }
