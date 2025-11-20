@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,8 +7,13 @@
 <body>
 <div class="nav" th:fragment="navbar">
     <a class="logo">SpringMall</a>
-    <a>List</a>
-    <a>Write</a>
+    <a th:href="@{/list}">List</a>
+    <a th:href="@{/write}">Write</a>
+    <span sec:authentication="principal.username"></span>
+
+    <div sec:authorize="isAuthenticated()">
+        <a href="/logout">로그아웃</a>
+    </div>
 </div>
 </body>
 </html>

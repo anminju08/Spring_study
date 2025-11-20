@@ -90,6 +90,11 @@ public class BlogController {
         System.out.println(encoder.encode("qwer1234"));
         return "redirect:/list";
     }
+
+    @GetMapping("/blog/login")
+    public String login() {
+        return "login.html";
+    }
 }
 
 

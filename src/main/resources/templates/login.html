@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<form action="/login" method="POST">
+    아이디<input name="username">
+    비번<input name="password" type="password">
+    <button type="submit">전송</button>
+
+    <div th:if="${param.error}">
+        <h4>아이디나 비번 틀림</h4>
+    </div>
+</form>
+</body>
+</html>
