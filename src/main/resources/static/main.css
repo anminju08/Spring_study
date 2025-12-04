@@ -85,3 +85,12 @@ body {
     margin-bottom: 12px;
 }
 
+ .active-page {
+     font-weight: bold;
+     background: #4285F4; /* 구글 파란색 느낌 */
+     color: white !important;
+ }
+
+.pagination a {
+    color: #1a0dab;
+}

@@ -3,6 +3,8 @@ import com.example.spring.Item;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
@@ -94,6 +96,17 @@ public class BlogController {
     @GetMapping("/blog/login")
     public String login() {
         return "login.html";
+    }
+
+    @PostMapping("/search")
+    String postSearch(@RequestParam String searchText, Model model) {
+        List<Item> result = blogRepository.fullTextSearch(searchText);
+        model.addAttribute("result", result);
+        return "list.html";
+    }
+    @GetMapping("/search")
+    String getSearch() {
+        return "search.html";   // 검색폼 있는 페이지
     }
 }
 
